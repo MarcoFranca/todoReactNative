@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import Input from "./Input";
 import {connect} from "react-redux";
-import {addTodo, setTodoText} from "../redux/actions";
+import {addTodo, setTodoText, updateTodo} from "../redux/actions";
 class TodoForm extends Component {
     onChangeText(text){
         this.props.dispatchSetTodoText(text)
     }
 
     onPress(){
-        this.props.dispatchAddTodo(this.props.todo.text);
+        const {todo} = this.props;
+        if (todo.text){
+            if(todo.id)
+                return this.props.dispatchUpdateTodo(todo)
+            this.props.dispatchAddTodo(this.props.todo.text);
+        }
     }
 
     render() {
@@ -24,8 +29,9 @@ class TodoForm extends Component {
                 <View style={styles.containerButton}>
                     <Button
                         onPress={()=> this.onPress()}
-                        title="Add"
+                        title={!this.props.todo.id ? "Add" : "Update"}
                     />
+
                 </View>
 
             </View>
@@ -58,7 +64,9 @@ const mapStateToProps = (state)=>{
 export default connect(
     mapStateToProps,
     {
-    dispatchAddTodo: addTodo,
-    dispatchSetTodoText: setTodoText
-}
+        dispatchSetTodoText: setTodoText,
+        dispatchAddTodo: addTodo,
+        dispatchUpdateTodo: updateTodo,
+
+    }
 )(TodoForm);
