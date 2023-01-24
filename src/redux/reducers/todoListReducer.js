@@ -1,4 +1,4 @@
-import {ADD_TODO, TOGGLE_TODO, UPDATE_TODO} from "../actions";
+import {ADD_TODO, DELETE_TODO,TOGGLE_TODO, UPDATE_TODO} from "../actions";
 let nextId = 1;
 const todoListReducer = (state = [], action) =>{
     switch (action.type) {
@@ -26,6 +26,8 @@ const todoListReducer = (state = [], action) =>{
                 }
                     return todo;
             })
+        case DELETE_TODO:
+                return state.filter(todo => todo.id !== action.todo.id)
 
         default:
             return state;

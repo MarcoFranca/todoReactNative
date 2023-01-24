@@ -1,26 +1,30 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-
+import { ScrollView, StyleSheet} from 'react-native';
 import {connect} from "react-redux";
 import TodoListItem from "./TodoListItem";
-import {setEditingTodo, toggleTodo} from "../redux/actions"
+import {deleteTodo, setEditingTodo, toggleTodo} from "../redux/actions"
 
-const TodoList = ({todos, dispatchToggleTodo, dispatchEditingTodo}) => (
-    <View>
+const TodoList = ({todos, dispatchToggleTodo, dispatchEditingTodo, dispatchDeleteTodo}) => (
+    <ScrollView style={styles.container}>
         {todos.map(todo=>(
             <TodoListItem
-                key = {todo.id}
+                key={todo.id}
                 todo = {todo}
                 onPressTodo = {()=> dispatchToggleTodo(todo.id)}
                 onLongPressTodo = {()=> dispatchEditingTodo(todo)}
+                deleteTodo = {()=> dispatchDeleteTodo(todo)}
             />
         ))}
-    </View>
+    </ScrollView>
 )
 
 const styles = StyleSheet.create({
+    container:{
+        marginBottom:40,
+        backgroundColor: '#000000',
 
-})
+    }
+});
 
 const mapStateToProps = state =>{
     const {todos} = state;
@@ -30,7 +34,8 @@ const mapStateToProps = state =>{
 export default connect(
     mapStateToProps,
     {
-        dispatchToggleTodo:toggleTodo,
-        dispatchEditingTodo: setEditingTodo
-    })
-(TodoList) ;
+        dispatchToggleTodo: toggleTodo,
+        dispatchEditingTodo: setEditingTodo,
+        dispatchDeleteTodo: deleteTodo
+    }
+)(TodoList)
