@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Input from "./Input";
 import {connect} from "react-redux";
+import {LinearGradient} from "expo-linear-gradient";
 import {addTodo, setTodoText, updateTodo} from "../redux/actions";
+
 class TodoForm extends Component {
     onChangeText(text){
         this.props.dispatchSetTodoText(text)
@@ -20,35 +22,68 @@ class TodoForm extends Component {
     render() {
 
         return (
-            <View style={styles.container}>
+            <LinearGradient
+                style={styles.container}
+                colors={['#4740534D','#47405300']}
+                start={{x:0,y:1}}
+                end={{x:1,y:0}}
+            >
+
                 <View style={styles.containerInput}>
                     <Input
+                        style={styles.iputStyle}
                         value={this.props.todo.text}
                         onchangeText={text => this.onChangeText(text)} />
                 </View>
                 <View style={styles.containerButton}>
-                    <Button
+                    <TouchableOpacity
+                        activeOpacity={0.5}
                         onPress={()=> this.onPress()}
                         title={!this.props.todo.id ? "Add" : "Update"}
-                    />
-
+                    >
+                        <Image
+                            source={require('../assets/images/Add.png')}
+                            style={styles.buttonImageIconStyle}/>
+                    </TouchableOpacity>
                 </View>
-
-            </View>
+            </LinearGradient>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container:{
-        flexDirection:'row'
+        flexDirection:'row',
+        justifyContent:"space-between",
+        alignItems:'center',
+        paddingTop:8,
+        paddingBottom:8,
+        paddingLeft:12,
+        paddingRight:12,
+        height:46,
+        borderWidth: 2,
+        borderRadius:10,
+        marginLeft: 24,
+        marginRight: 24,
+        marginTop:8,
+    },
+    iputStyle:{
+        color:"#ffffff"
+
     },
     containerInput:{
-        flex:4,
+        alignSelf:"center",
+        height:38,
+        marginTop:16,
     },
     containerButton:{
-        flex:1,
-    }
+
+
+    },
+    buttonImageIconStyle: {
+        height: 30,
+        width: 30,
+    },
 });
 
 // const mapDispatchToProps = dispatch =>{
