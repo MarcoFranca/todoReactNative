@@ -7,7 +7,7 @@ const Input = ({ onchangeText, value}) => (
             onChangeText={onchangeText}
             value={value}
             style={styles.input}
-            underlineColorAndroid="#000"
+            placeholder='Digite a sua tarefa'
         />
     );
 
