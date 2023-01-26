@@ -6,6 +6,7 @@ const Input = ({ onchangeText, value}) => (
             onChangeText={onchangeText}
             value={value}
             placeholder='Digite a sua tarefa'
+            placeholderTextColor="rgba(255, 255, 255, 0.65)"
         />
     );
 
