@@ -1,22 +1,12 @@
 import React from 'react';
-
-import {StyleSheet, TextInput} from 'react-native';
+import {InputForm} from "./TodoFormStyle";
 
 const Input = ({ onchangeText, value}) => (
-        <TextInput
+        <InputForm
             onChangeText={onchangeText}
             value={value}
-            style={styles.input}
             placeholder='Digite a sua tarefa'
         />
     );
-
-const styles = StyleSheet.create({
-    input:{
-        paddingLeft:15,
-        paddingBottom:15,
-
-    }
-});
 
 export default Input;
