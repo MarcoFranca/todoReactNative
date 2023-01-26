@@ -3,7 +3,8 @@ import {ADD_TODO, SET_EDITING_TODO, SET_TODO_TEXT, UPDATE_TODO} from "../actions
 const INITIAL_STATE = {
     id: null,
     text: '',
-    done:false
+    done:false,
+    edit:false
 };
 const editingTodoReducer = (state = INITIAL_STATE ,action)=>{
     switch (action.type) {
@@ -19,6 +20,7 @@ const editingTodoReducer = (state = INITIAL_STATE ,action)=>{
             return state;
 
         case SET_EDITING_TODO:
+            action.todo.edit = true
             return action.todo;
     }
 }

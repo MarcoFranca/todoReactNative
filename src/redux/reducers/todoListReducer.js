@@ -6,12 +6,14 @@ const todoListReducer = (state = [], action) =>{
             const newTodo = {
                 id:nextId++,
                 text: action.text,
-                done: false
+                done: false,
+                edit:false
             }
             return[...state, newTodo]
         case UPDATE_TODO:
             return  state.map(todo =>{
                 if (todo.id === action.todo.id){
+                    action.todo.edit = false
                     return action.todo
                 }
                 return todo
