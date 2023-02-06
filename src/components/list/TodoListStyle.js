@@ -28,18 +28,3 @@ TextContainer.text = styled.Text`
 export const BtnContainer = styled.View`
   flex-direction: row;
 `
-
-//     button:{
-//         paddingTop: 10,
-//         paddingBottom:10,
-//         paddingLeft:20,
-//         paddingRight:20,
-//         borderRadius: 20,
-//         backgroundColor: '#cc2f3f',
-//     },
-//     buttonText:{
-//         fontSize:20,
-//         fontWeight:"bold",
-//         color:'#ffffff'
-//     }
-// })
