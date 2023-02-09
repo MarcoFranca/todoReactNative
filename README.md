@@ -19,6 +19,7 @@ mais próximo do design possível.
 <li>Marcar a atividade como concluida.</li>
 <li>Editar a atividade casa necessário.</li>
 <li>Deletar a atividade caso deseje.</li>
+<li>Persistir os dados.</li>
 </ul>
 
 ---
@@ -30,7 +31,7 @@ mais próximo do design possível.
 </div>
 
 [![Little red riding hood](./assets/telaVideoTodo.png)](http://sc.com.ly/show/11aad59b-c94f-48b7-ba7c-03a9448939f1 " Click to Watch!")
-- [Live site](url do live site)
+- [Live site]()
 ---
 
 
@@ -43,6 +44,7 @@ mais próximo do design possível.
 <ul style="color: azure">
 <li>React-Native</li>
 <li>Lib Expo linear gradient</li>
+<li>Lib react native async storageExpo</li>
 <li>Semantic HTML5 markup</li>
 <li>Styled-Components</li>
 <li>Redux</li>
@@ -53,7 +55,7 @@ mais próximo do design possível.
 <h2 style="color: azure;">Aprendizados</h2>
 </div>
 <h3 style="color: burlywood; text-align: justify">
-Neste projeto, além de colocar em prática os conceitos de React-native tive a oportunidade de usar o <span style="font-size: 20px; color: cornflowerblue">styled-component</span> assim como o <span style="font-size: 20px; color: cornflowerblue">redux</span>
+Neste projeto, além de colocar em prática os conceitos de React-native tive a oportunidade de usar o <span style="font-size: 20px; color: cornflowerblue">styled-component</span>,<span style="font-size: 20px; color: cornflowerblue"> Async-storage</span>,  assim como o <span style="font-size: 20px; color: cornflowerblue">redux</span>
 </h3>
 
 <h3 style="color: azure; line-height: 28px">

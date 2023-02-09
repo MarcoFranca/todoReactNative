@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View} from 'react-native';
 import Input from "./Input";
 import {connect} from "react-redux";
 import {LinearGradient} from "expo-linear-gradient";
@@ -11,14 +11,25 @@ class TodoForm extends Component {
         this.props.dispatchSetTodoText(text)
     }
 
-    onPress(){
-        const {todo} = this.props;
+    onPress = async () =>{
+        const {todo, todos} = this.props;
+
         if (todo.text){
-            if(todo.id)
-                return this.props.dispatchUpdateTodo(todo)
-            this.props.dispatchAddTodo(this.props.todo.text);
-        }
+            try {
+                if(todo.id){
+                    this.props.dispatchUpdateTodo(todo)
+                    console.log(todos)
+                }else {
+                    await this.props.dispatchAddTodo(this.props.todo.text);
+                    console.log(todos)
+                }
+            }
+            catch (e) {
+                alert(e)
+            }}
+
     }
+
 
     render() {
 
@@ -63,7 +74,8 @@ class TodoForm extends Component {
 // }
 const mapStateToProps = (state)=>{
     return {
-        todo: state.editingTodo
+        todo: state.editingTodo,
+        todos: state.todos
     }
 }
 export default connect(

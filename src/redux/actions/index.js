@@ -1,3 +1,8 @@
+export const ADD_STORE_TODO = 'ADD_STORE_TODO';
+export  const addStoreTodo = todos => ({
+    type: ADD_STORE_TODO,
+    todos
+});
 export const ADD_TODO = 'ADD_TODO';
 export  const addTodo = text => ({
     type: ADD_TODO,

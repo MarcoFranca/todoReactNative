@@ -10,7 +10,11 @@ import {Container, FinalBar} from "./TodoAppStyle";
 
 const {width} = Dimensions.get('window')
 export default class TodoApp extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
+
         return (
             <Provider store={store} >
                 <Container>
