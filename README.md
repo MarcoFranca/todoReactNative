@@ -7,7 +7,23 @@ mais próximo do design possível.
  .
 
 ---
-<div style="display: flex; justify-content: center; align-items: center">
+
+## Sumário
+
+
+- [Desafio](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#screenshot)
+- [Tecnologias utilizadas](#my-process)
+- [Aprendizados](#what-i-learned)
+  - [Styled-Components](#styled)
+  - [Async storage](#storage)
+  - [Redux](#redux)
+- [Author](#author)
+
+
+
+<div style="display: flex; justify-content: center; align-items: center" id="the-challenge">
 <img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/social_leaderboard_FILL0_wght400_GRAD0_opsz48.svg"> 
 <h2 style="color: azure;">Desafio</h2>
 </div>
@@ -24,7 +40,7 @@ mais próximo do design possível.
 
 ---
 
-<div style="display: flex; justify-content: center; align-items: center">
+<div style="display: flex; justify-content: center; align-items: center" id="screenshot">
 <img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/video_library_FILL0_wght400_GRAD0_opsz48.svg"> 
 <h2 style="color: azure;"> Video & links</h2>
 <img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/link_FILL0_wght400_GRAD0_opsz48.svg"> 
@@ -35,7 +51,7 @@ mais próximo do design possível.
 ---
 
 
-<div style="display: flex; justify-content: center; align-items: center">
+<div style="display: flex; justify-content: center; align-items: center" id="my-process">
 <img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/military_tech_FILL0_wght400_GRAD0_opsz48.svg"> 
 <h2 style="color: azure;">Tecnologias utilizadas</h2>
 </div>
@@ -50,7 +66,7 @@ mais próximo do design possível.
 <li>Redux</li>
 </ul>
 </div>
-<div style="display: flex; justify-content: center; align-items: center">
+<div style="display: flex; justify-content: center; align-items: center" id="what-i-learned">
 <img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/school_FILL0_wght400_GRAD0_opsz48.svg"> 
 <h2 style="color: azure;">Aprendizados</h2>
 </div>
@@ -58,7 +74,7 @@ mais próximo do design possível.
 Neste projeto, além de colocar em prática os conceitos de React-native tive a oportunidade de usar o <span style="font-size: 20px; color: cornflowerblue">styled-component</span>,<span style="font-size: 20px; color: cornflowerblue"> Async-storage</span>,  assim como o <span style="font-size: 20px; color: cornflowerblue">redux</span>
 </h3>
 
-<h3 style="color: azure; line-height: 28px">
+<h3 style="color: azure; line-height: 28px" id="styled">
 Coloquei em prática conceitos do <code>Styled-Component</code>.
 </h3>
 
@@ -131,7 +147,55 @@ export const ListContainer = styled.ScrollView`
 </ListContainer>
 ```
 ---
-<h3 style="color: azure; line-height: 28px">
+<h3 style="color: azure; line-height: 28px" id="storage">
+Implementei o <code>Async-Storage</code> para persistir os dados.
+</h3>
+
+<p style="color: aliceblue">
+1- usei o <code>setItem</code> do <code>AsyncStorage</code> dentro de um try catch usando o <code>JSON.stringfy</code>
+para converter o objeto em json e assim criar ou atualizar os dados 
+</p>
+
+```jsx
+        case ADD_TODO:
+        try {
+         const newTodo = {
+          id:nextId,
+          text: action.text,
+          done: false,
+          edit:false
+         }
+         AsyncStorageNative.setItem('todos', JSON.stringify([...state, newTodo]))
+         return[...state, newTodo]
+
+        }catch (e){console.log(e)}
+
+```
+---
+
+<p style="color: aliceblue">
+2- usei o useEffect com uma função capturando as informações do <code>AsyncStorage</code> atravez do <code>getItem</code>
+para capturar as informaçoes do <code>AsyncStorage</code> e converti o json em objeto atravez do <code>JSON.stringfy</code>
+para poder ser usado no código e passei para o <code>Redux</code> para assim se existir uma todo gravada ele identificar 
+e mostrar para o usuario 
+</p>
+
+```jsx
+useEffect( async ()=>{
+const totalParse = await AsyncStorageNative.getItem("todos")
+const total = JSON.parse(totalParse)
+if (total){
+dispatchAddTodo(total);
+console.log(total)
+}
+},[])
+
+```
+
+
+___
+
+<h3 style="color: azure; line-height: 28px" id="redux">
 Coloquei em prática conceitos do <span style="color: cornflowerblue">Redux</span> como 
 implementação de <span style="color: cornflowerblue">States</span>,<span style="color: cornflowerblue">Reducer</span> e <span style="color: cornflowerblue">Actions</span>.
 </h3>
@@ -274,6 +338,11 @@ export default connect(null, {
 })(TodoForm);
 ```
 ---
+
+<div style="display: flex; justify-content: center; align-items: center" id="author">
+<img style="height:35px ; margin-top:25px; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(60deg) brightness(98%) contrast(107%);" src="./assets/workspace_premium_FILL0_wght400_GRAD0_opsz48.svg"> 
+<h2 style="color: azure;">Autor</h2>
+</div>
 
 - Linkdin - [Marco Tullio Franca](https://www.linkedin.com/in/marco-franca/)
 - Frontend Mentor - [@MarcoFranca](https://www.frontendmentor.io/profile/MarcoFranca)
